@@ -1,56 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<link rel="stylesheet" href="/style.css" />
-<title>MicroPython Server</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <title>Cat Face Art</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #saveButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #saveButton:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-
-    <h1>Welcome to Dan's MicroPython Server</h1>
-    <p>This is a web page served by a MicroPython server.</p>
-    <p>I have also included a p5js canvas below with buttons</p>
-    <p>This page integrates html, css, micropython and p5jS</p>
-    <p>All hosted on a Raspberry Pi Pico W!</p>
-<frameset allow-scripts>
-    <button id="button1" onclick="my_function1()" >Toggle PICO LED</button>
-    <button id="button2" onclick="my_function2()" >Toggle GREEN LED</button>
-    <button id="button3" onclick="my_function3()" >Toggle SERVO</button>
-    <button id="button4" onclick="my_function4()" >Led Flicker</button>
+    <div id="canvasContainer"></div>
+    <button id="saveButton" onclick="saveCanvas()">Save Canvas</button>
     <script src="art.js"></script>
-    <script>
-        function my_function1() {
-          fetch('/button1').then(response => response.text()).then(data => {
-          console.log(data);
-        });
-        }
-        
-        function my_function2() {
-          fetch('/button2').then(response => response.text()).then(data => {
-          console.log(data);
-        });
-        }
-        
-        function my_function3() {
-          fetch('/button3').then(response => response.text()).then(data => {
-          console.log(data);
-        });
-        }
-        
-        function my_function4() {
-          fetch('/button4').then(response => response.text()).then(data => {
-          console.log(data);
-        });
-        }
-    </script>
-
-
-</frameset>
 </body>
- 
 </html>
 
 
