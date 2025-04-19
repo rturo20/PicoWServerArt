@@ -1,0 +1,57 @@
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/style.css" />
+<title>MicroPython Server</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+</head>
+<body>
+
+    <h1>Welcome to Dan's MicroPython Server</h1>
+    <p>This is a web page served by a MicroPython server.</p>
+    <p>I have also included a p5js canvas below with buttons</p>
+    <p>This page integrates html, css, micropython and p5jS</p>
+    <p>All hosted on a Raspberry Pi Pico W!</p>
+<frameset allow-scripts>
+    <button id="button1" onclick="my_function1()" >Toggle PICO LED</button>
+    <button id="button2" onclick="my_function2()" >Toggle GREEN LED</button>
+    <button id="button3" onclick="my_function3()" >Toggle SERVO</button>
+    <button id="button4" onclick="my_function4()" >Led Flicker</button>
+    <script src="script.js"></script>
+    <script>
+        function my_function1() {
+          fetch('/button1').then(response => response.text()).then(data => {
+          console.log(data);
+        });
+        }
+        
+        function my_function2() {
+          fetch('/button2').then(response => response.text()).then(data => {
+          console.log(data);
+        });
+        }
+        
+        function my_function3() {
+          fetch('/button3').then(response => response.text()).then(data => {
+          console.log(data);
+        });
+        }
+        
+        function my_function4() {
+          fetch('/button4').then(response => response.text()).then(data => {
+          console.log(data);
+        });
+        }
+    </script>
+
+
+</frameset>
+</body>
+ 
+</html>
+
+
+
