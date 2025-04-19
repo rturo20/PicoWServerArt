@@ -17,33 +17,81 @@ function draw() {
     fill('#8b8b8b');
     ellipse(200, 200, 240, 200);
 
-    // Draw ears
     // Left ear
+    push();
+    translate(135, 160);  // Moved to upper left of head circle
+    rotate(-PI/4);  // Angled slightly outward
+    
+    // Outer ear shape
+    fill('#8b8b8b');
     beginShape();
-    vertex(120, 130);
-    vertex(80, 50);
-    vertex(160, 100);
+    vertex(0, 0);
+    vertex(-20, -50);  // Ear tip
+    vertex(30, -20);
     endShape(CLOSE);
 
-    // Right ear
+    // Inner ear - main pink part
+    fill('#ffcdd2');
     beginShape();
-    vertex(280, 130);
-    vertex(320, 50);
-    vertex(240, 100);
+    vertex(2, -5);
+    vertex(-15, -40);  // Inner tip
+    vertex(25, -18);
     endShape(CLOSE);
 
     // Inner ear details
-    fill('#ffcdd2');
+    stroke('#666');
+    strokeWeight(1);
+    // Inner ear fur lines
+    line(0, -10, -10, -35);
+    line(5, -15, -5, -35);
+    line(10, -20, 0, -30);
+    pop();
+
+    // Right ear
+    push();
+    translate(265, 160);  // Moved to upper right of head circle
+    rotate(PI/4);  // Angled slightly outward
+    
+    // Outer ear shape
+    fill('#8b8b8b');
     beginShape();
-    vertex(110, 100);
-    vertex(90, 60);
-    vertex(140, 90);
+    vertex(0, 0);
+    vertex(20, -50);  // Ear tip
+    vertex(-30, -20);
     endShape(CLOSE);
 
+    // Inner ear - main pink part
+    fill('#ffcdd2');
     beginShape();
-    vertex(290, 100);
-    vertex(310, 60);
-    vertex(260, 90);
+    vertex(-2, -5);
+    vertex(15, -40);  // Inner tip
+    vertex(-25, -18);
+    endShape(CLOSE);
+
+    // Inner ear details
+    stroke('#666');
+    strokeWeight(1);
+    // Inner ear fur lines
+    line(0, -10, 10, -35);
+    line(-5, -15, 5, -35);
+    line(-10, -20, 0, -30);
+    pop();
+
+    // Add ear shadows for depth
+    noStroke();
+    fill('rgba(0, 0, 0, 0.1)');
+    // Left ear shadow
+    beginShape();
+    vertex(135, 160);
+    vertex(120, 115);
+    vertex(155, 145);
+    endShape(CLOSE);
+    
+    // Right ear shadow
+    beginShape();
+    vertex(265, 160);
+    vertex(280, 115);
+    vertex(245, 145);
     endShape(CLOSE);
 
     // Draw eyes
@@ -94,30 +142,6 @@ function draw() {
     bezier(230, 220, 280, 220, 320, 220, 360, 220);
     bezier(230, 220, 280, 240, 320, 240, 360, 250);
 
-    // Add fur texture
-    stroke('#777');
-    strokeWeight(0.5);
-    for(let i = 0; i < 100; i++) {
-        let x = 100 + random(200);
-        let y = 100 + random(200);
-        let length = 5 + random(15);
-        let angle = random(PI);
-        
-        line(x, y, 
-             x + cos(angle) * length, 
-             y + sin(angle) * length);
-    }
-
-    // Add some darker patches for texture
-    noStroke();
-    fill('rgba(102, 102, 102, 0.1)');
-    for(let i = 0; i < 20; i++) {
-        push();
-        translate(100 + random(200), 100 + random(200));
-        rotate(random(PI));
-        ellipse(0, 0, 40, 30);
-        pop();
-    }
 }
 
 function saveCanvas() {
